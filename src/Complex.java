@@ -33,8 +33,8 @@ public class Complex {
         return "(" + getZ1()+ ") - (" + getZ2() + ")" + " = " + stA + " + " + stB + "i";
     }
     public String mul() {
-        double stA = a1 * a2;
-        double stB = b1 * b2;
+        double stA = a1 * a2 - b1 * b2;
+        double stB = b1 * a2 + b2 * a1;
         return "(" + getZ1() + ") * (" + getZ2() + ")" + " = " + stA + " + " + stB + "i";
     }
     public String equal() {
