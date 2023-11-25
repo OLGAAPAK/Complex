@@ -1,48 +1,29 @@
 public class Complex {
 
-    public double a1, a2, b1, b2;
+    public double real;
+    public double image;
 
-    public Complex(int a1, int b1, int a2, int b2) {
-        this.a1 = a1;
-        this.b1 = b1;
-        this.a2 = a2;
-        this.b2 = b2;
+    public Complex(double real, double image) {
+        this.real = real;
+        this.image = image;
+    }
+    public static Complex sum(Complex c1, Complex c2) {
+        return new Complex(c1.real + c2.real, c1.image + c2.image);
+    }
+    public static Complex sub(Complex c1, Complex c2) {
+        return new Complex(c1.real - c2.real, c1.image - c2.image );
+    }
+    public static Complex mul(Complex c1, Complex c2) {
+        return new Complex(c1.real * c2.real - c1.image * c2.image, c1.real * c2.image + c1.image * c2.real);
+    }
+    public static boolean equals(Complex c1, Complex c2) {
+        double rc1 = Math.sqrt(Math.pow(c1.real, 2) + Math.pow(c1.image, 2));
+        double rc2 = Math.sqrt(Math.pow(c2.real, 2)) + (Math.pow(c2.image, 2));
+        return rc1 == rc2;
     }
 
-    public Complex(double a1, double b1, double a2, double b2) {
-        this.a1 = a1;
-        this.b1 = b1;
-        this.a2 = a2;
-        this.b2 = b2;
-    }
-    public String getZ1() {
-        return a1 + " + " + b1 + "i";
-    }
-
-    public String getZ2() {
-        return a2 + " + " + b2 + "i";
-    }
-    public String add() {
-        double stA = a1 + a2;
-        double stB = b1 + b2;
-        return "(" + getZ1()+ ") + (" + getZ2() + ")" + " = " + stA + " + " + stB + "i";
-    }
-    public String sub() {
-        double stA = a1 - a2;
-        double stB = b1 - b2;
-        return "(" + getZ1()+ ") - (" + getZ2() + ")" + " = " + stA + " + " + stB + "i";
-    }
-    public String mul() {
-        double stA = a1 * a2 - b1 * b2;
-        double stB = b1 * a2 + b2 * a1;
-        return "(" + getZ1() + ") * (" + getZ2() + ")" + " = " + stA + " + " + stB + "i";
-    }
-    public String equal() {
-        if (a1 == a2 && b1 == b2){
-            return "equals";
-        }
-        else {
-            return "not equals";
-        }
+    @Override
+    public String toString() {
+        return image >= 0 ? real + "+" + image + "i" : real + "" + image + "i";
     }
 }
